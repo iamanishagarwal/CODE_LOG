@@ -1,0 +1,43 @@
+<!-- Add Problem Modal -->
+<div class="modal" id="addProblemModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content container-fluid">
+            <form action="/problem" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Problem</h5>
+                    <button class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="PALIN" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link</label>
+                        <input type="url" id="link" name="link" class="form-control" placeholder="https://www.codechef.com/sample" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tag">Tag</label>
+                        <input type="text" id="tag" name="tag" class="form-control" placeholder="Dynamic Progranmming">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeTaken">Time Taken</label>
+                        <input type="text" id="timeTaken" name="timeTaken" class="form-control" placeholder="00:00:00">
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <input type="number" class="form-control" name="rating" id="rating" min="1" max="10" placeholder="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <textarea type="text" id="note" class="form-control" name="note" rows="3" placeholder="Need to know the concept of modular addition for solving the problem"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Submit"></input>
+                    <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>      
+    </div>
+</div>

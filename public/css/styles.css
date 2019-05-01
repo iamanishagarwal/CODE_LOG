@@ -1,0 +1,105 @@
+*{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #f8f9fa;
+}
+
+h1{
+    font-family: 'Source Sans Pro'!important;
+}
+
+.header{
+    position: fixed;
+    display: inline-block;
+    width: inherit;
+    background-color: #f8f9fa;
+    z-index: 2
+}
+
+.header a{
+    color: black;
+    text-decoration: none;
+}
+
+#page-1, #page-2{
+    height: 100vh;
+}
+
+button{
+    font-size: 15px;
+}
+
+#problem-solved-number, #time{
+    width: fit-content;
+    font-size: 75px;
+    border-radius: 8px;
+}
+
+@keyframes chevron-animate {
+    from{
+        top: 4rem;
+        color:#007bff;
+    }
+    to{
+        top: 6rem;
+        color: #007bff;
+    }
+}
+
+#chevron-icon{
+    position: relative;
+    top: 4rem;
+    color: #002752;
+    animation-name: chevron-animate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+#days{
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 5px 15px;
+    position: relative;
+    top: -1.2rem;
+}
+
+.card{
+    width: calc(100%/3 - 20px);
+    margin: 10px;
+}
+/* 
+@keyframes alert-animate {
+    from{
+        display: block;
+        opacity: 1;
+    }
+    to{
+        display: none;
+        opacity: 0;
+    }
+} */
+
+.alert{
+    width: 500px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin: auto;
+    /* animation-name: alert-animate;
+    animation-duration: 5s; */
+    z-index: 3
+}
+
+.list{
+    padding-top: 80px!important;
+}
+
+#deleteProblemButton{
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+}

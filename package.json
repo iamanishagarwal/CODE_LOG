@@ -1,0 +1,46 @@
+{
+  "name": "code_log",
+  "version": "1.0.0",
+  "description": "A webapp to keep record of the number of coding problems solved with their details",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "10.15.1"
+  },
+  "keywords": [
+    "webapp",
+    "code_log",
+    "codeLog",
+    "problem record",
+    "code record",
+    "program record",
+    "competitive programming",
+    "node.js",
+    "express",
+    "mongodb",
+    "web"
+  ],
+  "author": "Anish Agarwal",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "config": "^3.1.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.16.1",
+    "helmet": "^3.16.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.22",
+    "winston": "^2.4.0"
+  }
+}

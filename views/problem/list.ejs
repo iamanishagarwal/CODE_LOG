@@ -1,0 +1,48 @@
+<!-- Including header content which is common for all pages -->
+<%- include ../layouts/header.ejs %>
+<% if(problems) { %>
+<div class="row p-5 list">
+    <% problems.forEach(function(problem){ %>
+    <div class="card">
+        <% if(!problem.timeTaken){
+            problem.timeTaken = "No time provided"
+        }
+        if(!problem.notes){
+            problem.notes = "No notes provided"
+        } %>
+        <div class="card-body">
+            <div class="card-title mb-3">Problem Name: 
+                <span class="h4"><%= problem.name %></span>
+                <form class="d-inline float-right" method="GET" action="/problem/<%= problem._id %>?>">
+                    <button type="submit" id="deleteProblemButton"><span><i class="far fa-edit text-danger"></i></span></button>  
+                </form> 
+                <form class="d-inline float-right" method="POST" action="/problem/<%= problem._id %>?_method=DELETE">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" id="deleteProblemButton"><span><i class="fa fa-trash text-danger"></i></span></button>  
+                </form> 
+            </div>
+            <p class="card-text">Problem Tag: <%= problem.tag %></p>
+            <p class="card-text">Problem Rating : <%= problem.rating %>/10</p>
+            <p class="card-text">Time Taken: <%= problem.timeTaken %></p>
+            <p class="card-text">Problem Notes: <%= problem.notes %></p>
+            <p class="card-text">Problem Link: <a href="<%= problem.link %>">Go to Website</a></p>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<% } %>
+
+<!-- Including edit problem from modal -->
+<%- include ./edit.ejs %>
+
+<!-- Including footer content which is common for all pages -->
+<%- include ../layouts/footer.ejs %>
+
+<% if(selectedProblem){ %>
+<script>
+    $(document).ready(function(){
+        $("#editProblemModal").modal('show')
+    })
+</script>
+<% } %>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code_Log</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Anish Agarwal">
+    <meta name="description" content="A webapp to keep record of the number of coding problems solved with their details">
+    <link rel="icon" href="assets/code_blooded.png" type="image/png">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="container-fluid bg-light">
+        
+        <div class="p-3 header">
+            <a href="../"><span class="h1 font-weight-bold">CODE_LOG</span></a>
+            <% if(messages.loggedIn == 'false') { %>
+            <button class="btn btn-dark float-right m-2"  data-toggle="modal" type="button" data-target="#logInFormModal">Log In</button>
+            <button class="btn btn-dark float-right m-2"  data-toggle="modal" type="button" data-target="#signUpFormModal">Sign Up</button>
+            <% } else { %>
+            <form action="/user/logout" class="d-inline" method="get">
+                <button class="btn btn-dark float-right m-2">LogOut</button>
+            </form>
+            <% } %>      
+        </div>
+        
+        <!-- Including sign up form modal -->
+        <%- include ../user/signup.ejs %>
+        
+        <!-- Including log in form modal -->
+        <%- include ../user/login.ejs %>
+
+        <% if(messages.success_msg) {%>
+        <div class="alert alert-success alert-dismissible fade show">
+            <button class="close" data-dismiss="alert" type="button">
+                <span>×</span>
+            </button>
+            <strong><%= messages.success_msg %></strong>
+        </div>
+        <% }%>
+
+        <% if(messages.error_msg) {%>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button class="close" data-dismiss="alert" type="button">
+                <span>×</span>
+            </button>
+            <strong><%= messages.error_msg %></strong>
+        </div>
+        <% }%>

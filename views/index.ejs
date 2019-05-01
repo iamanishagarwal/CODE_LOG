@@ -1,0 +1,59 @@
+<!-- Including header content which is common for all pages -->
+<%- include layouts/header.ejs %>
+
+<div class="d-flex flex-column justify-content-center align-items-center" id="page-1">
+    <h1 class="display-2 font-weight-bold text-center">Total Problems Solved</h1>
+    <% if(!messages.problem_solved){
+            messages.problem_solved = 0;
+    } %>
+    <span class=" text-center font-weight-bold bg-primary text-white px-3 m-3" id="problem-solved-number"><%= messages.problem_solved %></span>
+    <button class="btn btn-dark mt-3" id="add-button" data-toggle="modal" type="button" data-target="#addProblemModal">Add Problem</button>
+    <form action="/problem" method="get">
+        <button class="btn btn-dark mt-3">Problem Solved History</button>
+    </form>
+    
+    <!-- Including add problem form modal -->
+    <%- include problem/add.ejs %>
+
+    <a href="#page-2"><span class="fas fa-3x fa-angle-double-down" id="chevron-icon"></span></a>   
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center" id="page-2">
+    <h1 class="display-2 font-weight-bold text-center">Last Problem Solved On</h1>
+    <div>
+        <span class="h2 text-white bg-danger" id="days">Days: <span id="days-number" class="text-light">0</span></span>
+        <span class=" text-center font-weight-bold bg-primary text-white px-3 m-3" id="time">00:00:00</span>
+    </div>
+</div>
+<div>
+    <span class="h5 float-right">For any query and problem regarding the webapp mail me at anish99033@gmail.com. I will try and solve it as soon as possible.</span>    
+</div>
+
+<!-- Including footer content which is common for all pages -->
+<%- include layouts/footer.ejs %>
+
+<script>
+    
+    var day = "<%= messages.lastProblem_time %>"
+    var date = new Date(day)
+
+    function calculateTimeDifference(){
+        var date1 = new Date()
+        var timeDifference = date1 - date
+        daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24))
+        var hoursDifference = Math.floor((timeDifference % (1000 * 3600 * 24)) / (1000 * 3600))
+        hoursDifference = (hoursDifference < 10 ? "0" : "") + hoursDifference
+        var minutesDifference = Math.floor(((timeDifference % (1000 * 3600 * 24)) % (1000 * 3600)) / (1000 * 60))
+        minutesDifference = (minutesDifference < 10 ? "0" : "") + minutesDifference
+        var secondsDifference = Math.floor((((timeDifference % (1000 * 3600 * 24)) % (1000 * 3600)) % (1000 * 60)) / 1000)
+        secondsDifference = (secondsDifference < 10 ? "0" : "") + secondsDifference
+        time = hoursDifference + ":" + minutesDifference + ":" + secondsDifference
+        document.querySelector('#time').innerHTML = time
+        document.querySelector('#days-number').innerHTML = daysDifference
+    }
+
+    if(day){
+        setInterval(calculateTimeDifference, 1000)
+    }
+
+</script>
