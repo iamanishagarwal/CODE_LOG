@@ -7,6 +7,7 @@ require('./startup/config')(app)
 require('./startup/prod')(app)
 require('./startup/routes')(app)
 
-app.listen(3000, () => {
-    console.log("The app is running on Port 3000");
+var port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`The app is listening on port : ${port}`)
 })
