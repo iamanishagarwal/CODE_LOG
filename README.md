@@ -1,4 +1,5 @@
-Before running the application execute the command given below :-
+For running the application in your local machine execute the following commands :-
 
-1. export jwtKey=<secret-key> //  with any secret key to generate unique JSON Web Token
-2. node index.js // For running the application
+1. npm install // Install the dependencies in the local node_modules folder
+2. export jwtKey=secret_key //  with any secret_key to generate unique JSON Web Token
+3. node index.js // For running the application
