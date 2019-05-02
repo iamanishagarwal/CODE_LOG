@@ -40,7 +40,7 @@ function validateProblem(problem)
         name: joi.string().required(),
         link: joi.string().required(),
         tag: joi.string(),
-        timeTaken: joi.string().min(8).max(9).allow(''),
+        timeTaken: joi.string().max(9).allow(''),
         rating: joi.number().integer().required().min(1).max(10),
         note: joi.string().allow(''),
         _method: joi.string().allow('')

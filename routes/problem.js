@@ -10,7 +10,10 @@ router.post('/', auth, async (req, res) => {
         req.body.tag = "No specific tag";
 
     let {error} = validateProblem(req.body)
-    if(error) return res.status(400).send(error);
+    if(error){
+        req.flash('error_msg', error.details[0].message)
+        return res.redirect('/');
+    }
 
     let problem = null
     problem = await Problem.findOne({ $and: [{'userId': req.token._id}, {'link': req.body.link}]})
@@ -25,7 +28,7 @@ router.post('/', auth, async (req, res) => {
         name: req.body.name,
         link: req.body.link,
         tag: req.body.tag,
-        timeTakem: req.body.tag,
+        timeTaken: req.body.timeTaken,
         rating: req.body.rating,
         note: req.body.note,
         userId: req.token._id
@@ -101,7 +104,7 @@ router.put('/:id', auth, async (req, res) => {
                     name: req.body.name,
                     link: req.body.link,
                     tag: req.body.tag,
-                    timeTakem: req.body.tag,
+                    timeTaken: req.body.timeTaken,
                     rating: req.body.rating,
                     note: req.body.note,
                     userId: req.token._id
@@ -127,7 +130,7 @@ router.delete('/:id', auth, async (req, res) => {
         req.flash('Unable to delete the problem.')
         console.log(er)
     }
-    return res.redirect('/problem')
+    return res.redirect('/')
 })
 
 module.exports = router

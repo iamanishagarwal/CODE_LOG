@@ -4,11 +4,6 @@ const {User, validateUser, generatePassword} = require('../model/User')
 const auth = require('../middleware/auth')
 const router = express.Router()
 
-router.get('/register', async (req, res) => {
-    const users = await User.find().sort('username')
-    return res.send(users);
-})
-
 router.post('/register', async (req, res) => {
     let user = await User.findOne({username: req.body.username})
     if(user){
