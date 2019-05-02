@@ -8,9 +8,11 @@
     } %>
     <span class=" text-center font-weight-bold bg-primary text-white px-3 m-3" id="problem-solved-number"><%= messages.problem_solved %></span>
     <button class="btn btn-dark mt-3" id="add-button" data-toggle="modal" type="button" data-target="#addProblemModal">Add Problem</button>
+    <% if(messages.problem_solved){ %>
     <form action="/problem" method="get">
         <button class="btn btn-dark mt-3">Problem Solved History</button>
     </form>
+    <% } %>
     
     <!-- Including add problem form modal -->
     <%- include problem/add.ejs %>
